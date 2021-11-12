@@ -1,0 +1,22 @@
+<aura:component controller="OpptSearchPageNew" implements="force:lightningQuickAction,forceCommunity:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" access="global" >
+    
+    <aura:attribute name="recordId" type="string"/>
+    <aura:attribute name="myData" type="List" />
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="searchValue" type="string"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    
+    <span>
+        <lightning:input type="search" label="Search" placeholder="Search from Opportunities" aura:id="SearchBox" value="{!v.searchValue}"/>
+        <lightning:button variant="brand" label="Search" title="Search opportunity" onclick="{!c.searchTable}" />
+
+    </span>
+    
+    <span>
+        <lightning:datatable data="{! v.myData }"
+                             columns="{! v.columns }"
+                             keyField="Id"
+                             hideCheckboxColumn="true"/>
+    </span>
+</aura:component>

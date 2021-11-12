@@ -1,0 +1,4 @@
+<aura:component controller="updateLeadStatus" implements="force:lightningQuickAction,force:hasRecordId" >
+    <aura:attribute name="recordId" type="string"/>
+    <aura:handler name="init" value="{!this}" action="{!c.changeStatus}"/>    
+</aura:component>
