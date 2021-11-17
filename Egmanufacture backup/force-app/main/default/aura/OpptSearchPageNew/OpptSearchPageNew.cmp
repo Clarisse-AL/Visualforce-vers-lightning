@@ -7,16 +7,38 @@
     
     <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
     
-    <span>
-        <lightning:input type="search" label="Search" placeholder="Search from Opportunities" aura:id="SearchBox" value="{!v.searchValue}"/>
-        <lightning:button variant="brand" label="Search" title="Search opportunity" onclick="{!c.searchTable}" />
-
-    </span>
     
-    <span>
-        <lightning:datatable data="{! v.myData }"
-                             columns="{! v.columns }"
-                             keyField="Id"
-                             hideCheckboxColumn="true"/>
-    </span>
+    <div class="slds-box slds-theme_default">
+        
+        <lightning:layout multipleRows="true">
+            
+            <lightning:layoutItem class="slds-m-around_xx-small" size="12">
+                <div class="slds-border_bottom">
+                    <h2 class="slds-text-heading_medium">Search Opportunity with keyword</h2>
+                </div>
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem class="slds-m-around_xx-small" size="12">
+                <div class="input">
+                    <lightning:input type="search" placeholder="Search from Opportunities" aura:id="SearchBox" name="SearchBox" value="{!v.searchValue}"/>
+                </div>
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem class="slds-m-around_xx-small" size="3">
+                    <lightning:button variant="brand" label="Search" title="Search opportunity" onclick="{!c.searchTable}" class="slds-button slds-button_brand"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+        <lightning:layout>
+            <lightning:layoutItem class="slds-m-around_xx-small" size="12">
+                <div class="dataTable">
+                    <lightning:datatable data="{! v.myData }"
+                                         columns="{! v.columns }"
+                                         keyField="Id"
+                                         hideCheckboxColumn="true"/>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+    </div>
 </aura:component>
